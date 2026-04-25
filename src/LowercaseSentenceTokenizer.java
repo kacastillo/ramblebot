@@ -39,9 +39,19 @@ public class LowercaseSentenceTokenizer implements Tokenizer {
         // Add the word portion only if something remains
         // (handles the edge case where the raw token is just ".")
       // if the period is the only character, we should not add an empty string as a token
-    
+    if (!withoutPeriod.isEmpty()) {
+      tokens.add(withoutPeriod); 
+    }
 
         // The period is always its own separate token
         // Add the word portion if it's not empty
         //!withoutPeriod.isEmpty()
-    //return tokens; 
+        tokens.add(".");
+      } else {
+        tokens.add(word); // Add the word as a token
+      }
+    }
+    return tokens; 
+  }
+}
+
